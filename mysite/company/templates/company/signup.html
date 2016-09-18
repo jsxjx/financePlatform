@@ -1,0 +1,56 @@
+{% extends "company/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+<h1></h1>
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m4 z-depth-1 center">
+        <h5 class="teal-text">注册</h5>
+        <form method="post" action="{% url 'signup' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col s12">
+              <input id="user_name" type="text" name="user_name" value="{{current_name}}" class="validate">
+              <label for="user_name">User Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <input id="user_password" type="password" name="user_password" value="{{current_password}}" class="validate">
+              <label for="user_password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <input id="user_email" type="email" name="user_email" class="{{current_email}}"  class="validate">
+              <label for="user_email">email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center">
+              <input class="waves-effect waves-light btn" type="submit" value="注册" />
+              <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

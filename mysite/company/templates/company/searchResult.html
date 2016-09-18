@@ -1,0 +1,36 @@
+{% extends "company/base.html" %}
+{% load staticfiles %}
+
+{% block title %}capitalStructure{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+      {% if result_list %}
+      <div class="row">
+        {% for result in result_list %}
+        <div class="col s12 m4" >
+          <div class="card" >
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="{% static 'image/background6.jpg' %}">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">{{ result.stock_shorter_name }} <i
+              class="mdi-navigation-more-vert right"></i></span>
+              <p><a href="/company/{{result.stock_id}}/info">链接</a></p>
+            </div>
+            <div class="card-reveal blue lighten-2 ">
+              <span class="card-title white-text text-darken-4">{{ result.stock_shorter_name }} <i class="mdi-navigation-close right"></i></span>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+        <p>No info are available.</p>
+      {% endif %}
+  </div>
+</div>
+{% endblock %}

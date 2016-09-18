@@ -1,0 +1,31 @@
+{% extends "info1.html"%}
+{% block company_excutive %}
+<div class="icon-block">
+  <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+  <h5 class="center">公司高管</h5>
+  {% if company_excutive %}
+  <table class="hoverable bordered responsive-table">
+    <thead>
+      <tr>
+        <th data-field="name">姓名</th>
+        <th data-field="post">职位</th>
+        <th data-field="birthday">生日</th>
+        <th data-field="price">学历</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for excutive_info in company_excutive %}
+      <tr >
+        <td>{{ excutive_info.name}}</td>
+        <td>{{ excutive_info.post}}</td>
+        <td>{{ excutive_info.birthday}}</td>
+        <td>{{ excutive_info.highest_qualification}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>No excutive are available.</p>
+  {% endif %}
+</div>
+{% endblock %}

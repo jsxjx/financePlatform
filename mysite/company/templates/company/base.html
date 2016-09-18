@@ -1,0 +1,156 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>{% block tile %}Finance Platform{% endblock %}</title>
+  <!-- CSS  -->
+  {% load static %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <ul id="dropdown1" class="dropdown-content blue-text">
+    <li><a href="#!">基本信息</a></li>
+    <li><a href="#!">高管任职</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">股本结构</a></li>
+  </ul>
+  <ul id="dropdown2" class="dropdown-content">
+    <li><a href="/company/ipoIinfo/">股票首发</a></li>
+    <li><a href="#!">股票增发</a></li>
+  </ul>
+  <ul id="dropdown3" class="dropdown-content">
+    <li><a href="#!">主要指标</a></li>
+    <li><a href="#!">资产负债</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">现金流量</a></li>
+  </ul>
+  <ul id="dropdown4" class="dropdown-content">
+    <li><a href="/company/majorShareholdersIncreaseOrDecrease/">大股东增减持</a></li>
+    <li><a href="#!">业绩预告</a></li>
+    <li><a href="#!">预约收购</a></li>
+  </ul>
+  <nav class="blue white-text" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/company/" class="brand-logo white-text">一带一路</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <div class="nav-wrapper">
+            <form method="post" action="{% url 'searchCompany'%}">
+              {% csrf_token %}
+              <div class="input-field">
+                <input id="search" type="search" name="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </li>
+        <li ><a  class="white-text" href="/company/announcement">公告</a></li>
+        <li><a class=""  href="/company/majorShareholdersIncreaseOrDecrease/">增减持</a></li>
+        <li><a class=""  href="/company/countryData/">国家数据</a></li>
+        <!--
+        <li><a class="blue-text  dropdown-button" href="#!" data-activates="dropdown2">幕资<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="blue-text  dropdown-button" href="#!" data-activates="dropdown4">经营<i class="material-icons right">arrow_drop_down</i></a></li>
+        -->
+        <li><a class="dropdown-button" href="/company/login">登陆</a></li>
+        <li><a class="dropdown-button" href="/company/signup">注册</a></li>
+        <li class="">
+          <div class="switch">
+           <label class="white-text blue">
+             中
+             <input type="checkbox">
+             <span class="lever blue lighten-2"></span>
+             英
+           </label>
+         </div>
+        </li>
+      </ul>
+      <ul id="nav-mobile" class="side-nav blue lighten-1 white-text">
+        <li>
+          <div class="nav-wrapper">
+            <form method="post" action="{% url 'searchCompany'%}">
+              {% csrf_token %}
+              <div class="input-field">
+                <input id="search" type="search" name="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </li>
+        <li><a class="white-text"  href="/company/announcement" >公告</a></li>
+        <li><a class="white-text"  href="/company/majorShareholdersIncreaseOrDecrease/">增减持</a></li>
+        <li><a class="white-text"  href="/company/countryData/">国家数据</a></li>
+        <li><a class="white-text dropdown-button" href="#!" data-activates="dropdown2">幕资<i class="material-icons  right">arrow_drop_down</i></a></li>
+        <li><a class="white-text dropdown-button" href="/company/login">登陆</a></li>
+        <li><a class="white-text dropdown-button" href="/company/signup">注册</a></li>
+        <li>
+          <div class="switch ">
+           <label class="white-text">
+             中文
+             <input type="checkbox">
+             <span class="lever"></span>
+             英文
+           </label>
+         </div>
+        </li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="blue button-collapse" style="padding:"><i class="material-icons ">menu</i></a>
+    </div>
+  </nav>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  <footer class="page-footer blue">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">我们致力于开发更强大、更可靠、更全面的金融平台系统，帮助用户了解中国的金融信息。</p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">rwn</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  {% load static %}
+  <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+  <script src="{% static 'js/functools.js' %}"></script>
+  <script src="{% static 'js/i18next.js' %}"></script>
+
+  {% block js %}
+  {% endblock %}
+  </body>
+</html>

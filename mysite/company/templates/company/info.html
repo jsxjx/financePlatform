@@ -1,0 +1,134 @@
+{% extends "company/base.html" %}
+{% block content %}
+<div class="container">
+  <div class="section">
+
+    <!--   Icon Section   -->
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="icon-block z-depth-1">
+          <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+          <h5 class="center">基本信息</h5>
+          {% if company_info %}
+            <ul>
+              <li>股票代码：    {{company_info.stock_id}}</li>
+              <li>股票简称：    {{company_info.stock_shorter_name}}</li>
+              <li>公司全称：    {{company_info.company_full_name}}</li>
+              <li>英文名称：    {{company_info.company_english_name}}</li>
+              <li>注册地址：    {{company_info.registered_address}}</li>
+              <li>行业种类：    {{company_info.industry_type}}</li>
+              <li>法定代表人：  {{company_info.legal_representative}}</li>
+              <li>发行时间：    {{company_info.listed_time}}</li>
+              <li>首次招股时间：{{company_info.IPO_time}}</li>
+              <li>最新股价： <span id="new_stock_price"></span></li>
+            </ul>
+          {% else %}
+            <p>No polls are available.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="icon-block z-depth-1">
+          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+          <h5 class="center">公司高管</h5>
+          {% if company_excutive %}
+          <table  class="bordered responsive-table highlight">
+            <thead>
+              <tr>
+                <th data-field="name">姓名</th>
+                <th data-field="post">职位</th>
+                <th data-field="birthday">生日</th>
+                <th data-field="price">学历</th>
+              </tr>
+            </thead>
+            <tbody >
+              {% for excutive_info in company_excutive %}
+              <tr class="hoverable">
+                <td class="">{{ excutive_info.name}}</td>
+                <td>{{ excutive_info.post}}</td>
+                <td>{{ excutive_info.birthday}}</td>
+                <td>{{ excutive_info.highest_qualification}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+            <p>No excutive are available.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 z-depth-1">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="blue-text" href="#test1">主要财政指标</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test2">损益</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test3">资产负债</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test4">现金流量</a></li>
+        </ul>
+        <div id="test1" class="col s12">
+          <h5>主要财政指标</h5>
+
+          {% if major_financial_indicy_list %}
+          <table id="主要" class="bordered responsive-table highlight">
+            <thead>
+              <tr >
+                <th data-field="name">年份</th>
+                <th data-field="name">报告季度</th>
+                <th data-field="post"><a class="waves-effect waves-light " id="basic-earning-per-share">基本每股收益</a></th>
+                <th data-field="birthday"><a class="waves-effect waves-light " id="net-asset-per-share">每股净资产</a></th>
+                <th data-field="price"><a class="waves-effect waves-light " id="flow-rate">流动比率</a></th>
+                <th data-field="price"><a class="waves-effect waves-light " id="asset-liability-ratio">资产负债比率</a></th>
+                <th data-field="price"><a class="waves-effect waves-light  " id="net-profit-margins">净利润率</a></th>
+                <th data-field="price"><a class="waves-effect waves-light "  id="total-assets-ratio">总资产率</a></th>
+                <th data-field="price"><a class="waves-effect waves-light " id="near-assets-ratio">近资产比率</a></th>
+                <th data-field="price"><a class="waves-effect waves-light " id="fixed-assets-ratio">固定资产比率</a></th>
+              </tr>
+            </thead>
+            <tbody id="主要财政指标">
+              {% for major_financial_indicy in major_financial_indicy_list %}
+              <tr >
+                <td>{{ major_financial_indicy.announce_year}}</td>
+                <td>{{ major_financial_indicy.reporting_period}}</td>
+                <td>{{ major_financial_indicy.basic_earning_per_share}}</td>
+                <td>{{ major_financial_indicy.net_asset_per_share}}</td>
+                <td>{{ major_financial_indicy.flow_rate}}</td>
+                <td>{{ major_financial_indicy.asset_liability_ratio}}</td>
+                <td>{{ major_financial_indicy.net_profit_margins}}</td>
+                <td>{{ major_financial_indicy.total_assets_ratio}}</td>
+                <td>{{ major_financial_indicy.near_assets_ratio}}</td>
+                <td>{{ major_financial_indicy.fixed_assets_ratio}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+            <p>No excutive are available.</p>
+          {% endif %}
+          <p></p>
+        </div>
+        <div id="test2" class="col s12">
+          <h5>利润表</h5>
+          <p></p>
+        </div>
+        <div id="test3" class="col s12"></div>
+        <div id="test4" class="col s12"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 z-depth-1">
+        <div class="center-align" id="echartsGraph2" style="width: 600px;height:400px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% load static %}
+<a id="test_button">ppp</a>
+{% endblock %}
+
+{% block js %}
+{% load static %}
+<script src="{% static 'js/echarts.js' %}" ></script>
+<script src="{% static 'js/draw.js' %}" ></script>
+{% endblock %}

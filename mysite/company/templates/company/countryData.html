@@ -1,0 +1,49 @@
+{% extends "company/base.html" %}
+
+{% block title %}dataOfCountries{% endblock %}
+
+{% block content %}
+<div id=""></div>
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+    <h5 class="center"></h5>
+    <!--
+    <button id="getWorldJson">button</button>
+    -->
+    <div class="row">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="blue-text" href="#test1">地图</a></li>
+        <li class="tab col s3"><a class="blue-text" href="#test2">环形图</a></li>
+        <li class="tab col s3"><a class="blue-text" href="#test3">折线图</a></li>
+        <li class="tab col s3"><a class="blue-text" href="#test4">散点图</a></li>
+      </ul>
+      <div class="col s12" id="test1">
+        <div id='dataMap1' style="width:1000px;height:800px">
+        </div>
+      </div>
+      <div class="col s12" id="test2">
+        <h5>环形图-Gdp</h5>
+        <div id='dataMap2' style="width:600px;height:600px">
+        </div>
+      </div>
+      <div class="col s12" id="test3">
+        <div id='dataMap3' style="width:800px;height:500px">
+        </div>
+      </div>
+      <div class="col s12" id="test4">
+        <div id='dataMap4' style="width:800px;height:400px">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+{% load static %}
+<script src="{% static 'js/world.json' %}" ></script>
+
+<script src="{% static 'js/echarts.js' %}" ></script>
+<script src="{% static 'js/drawCountriesData.js' %}" ></script>
+{% endblock %}

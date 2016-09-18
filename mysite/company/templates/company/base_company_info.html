@@ -1,0 +1,22 @@
+{% extends "info1.html"%}
+{% block company_info %}
+<div class="icon-block">
+  <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+  <h5 class="center">基本信息</h5>
+  {% if company_info %}
+    <ul>
+      <li>股票代码：    {{company_info.stock_id}}</li>
+      <li>股票简称：    {{company_info.stock_shorter_name}}</li>
+      <li>公司全称：    {{company_info.company_full_name}}</li>
+      <li>英文名称：    {{company_info.company_english_name}}</li>
+      <li>注册地址：    {{company_info.registered_address}}</li>
+      <li>行业种类：    {{company_info.industry_type}}</li>
+      <li>法定代表人：  {{company_info.legal_representative}}</li>
+      <li>发行时间：    {{company_info.listed_time}}</li>
+      <li>首次招股时间：{{company_info.IPO_time}}</li>
+    </ul>
+  {% else %}
+    <p>No polls are available.</p>
+  {% endif %}
+</div>
+{% endblock %}

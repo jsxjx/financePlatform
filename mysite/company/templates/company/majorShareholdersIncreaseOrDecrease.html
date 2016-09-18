@@ -1,0 +1,60 @@
+{% extends "company/base.html" %}
+
+{% block title %}capitalStructure{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+          <h5 class="center">股东增减持</h5>
+          <table class="hoverable bordered responsive-table">
+            <thead>
+              <tr>
+                <th data-field="name">股票代码</th>
+                <th data-field="name">名称</th>
+                <th data-field="name">相关</th>
+                <th data-field="name">最新价</th>
+                <th data-field="name">涨跌幅</th>
+                <th data-field="name">股东名称</th>
+                <th data-field="name">增减</th>
+                <th data-field="name">变化数量</th>
+                <th data-field="name">占总股本比例</th>
+                <th data-field="name">占流通股比例</th>
+                <th data-field="name">持有总股数</th>
+                <th data-field="name">占总股本比例</th>
+                <th data-field="name">占流通股比例</th>
+                <th data-field="name">变动开始日</th>
+                <th data-field="name">变动截止日</th>
+                <th data-field="name">公告日</th>
+              </tr>
+            </thead>
+            {% if major_Shareholders_change_list %}
+            <tbody>
+              {% for change_info in major_Shareholders_change_list %}
+              <tr >
+                <td><a href="/company/{{change_info.stock_id}}/info">{{ change_info.stock_id}}</a></td>
+                <td>{{ change_info.stock_shorter_name}}</td>
+                <td></td>
+                <td>{{ change_info.new_price}}</td>
+                <td>{{ change_info.rise_or_fall_ratio}}</td>
+                <td>{{ change_info.shareholder_name}}</td>
+                <td>{{ change_info.rise_or_fall}}</td>
+                <td>{{ change_info.change_amount}}</td>
+                <td>{{ change_info.old_proportion_of_total_share}}</td>
+                <td>{{ change_info.old_proportion_of_tradable_shares}}</td>
+                <td>{{ change_info.new_total_number_shares_held}}</td>
+                <td>{{ change_info.new_proportion_of_total_share}}</td>
+                <td>{{ change_info.new_proportion_of_tradable_share}}</td>
+                <td>{{ change_info.change_start_date}}</td>
+                <td>{{ change_info.change_end_date}}</td>
+                <td>{{ change_info.announcement_date}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+            <p>No info are available.</p>
+          {% endif %}
+  </div>
+</div>
+{% endblock %}

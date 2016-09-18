@@ -1,0 +1,46 @@
+{% extends "company/base.html" %}
+
+{% block title %}capitalStructure{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+          <h5 class="center">股本结构</h5>
+          {% if company_capital_structure %}
+          <table class="hoverable bordered responsive-table">
+            <thead>
+              <tr>
+                <th data-field="name">股票代码</th>
+                <th data-field="name">变动时间</th>
+                <th data-field="name">公告时间</th>
+                <th data-field="name">变动原因</th>
+                <th data-field="post">人民币普通股</th>
+                <th data-field="birthday">境内上市外资股</th>
+                <th data-field="price">境外上市外资股</th>
+                <th data-field="price">国有股</th>
+                <th data-field="price">总股本</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for capital_structure in company_capital_structure %}
+              <tr >
+                <td><a href="/company/{{capital_structure.stock_id}}/info">{{ capital_structure.stock_id}}</a></td>
+                <td>{{ capital_structure.change_date}}</td>
+                <td>{{ capital_structure.announcement_date}}</td>
+                <td>{{ capital_structure.change_reason}}</td>
+                <td>{{ capital_structure.RMB_ordinary_stock}}</td>
+                <td>{{ capital_structure.domestically_listed_foreign_capital_shares}}</td>
+                <td>{{ capital_structure.foreign_capital_shares_listed_overseas}}</td>
+                <td>{{ capital_structure.state_owned_shares}}</td>
+                <td>{{ capital_structure.total_shared}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+            <p>No info are available.</p>
+          {% endif %}
+  </div>
+</div>
+{% endblock %}

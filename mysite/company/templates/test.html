@@ -1,0 +1,87 @@
+<html>
+<head>
+</head>
+<style>
+.content{
+  display:;
+}
+</style>
+<body>
+  <div id="test1">
+    <p>test1</p>
+  </div>
+  <div id="panel">
+    <h1 class="head">Hello World!</h1>
+    <div class="content">
+      JJJJJJJJJJJJJ
+    </div>
+  </div>
+</body>
+<script src="G:\\Program\\work\\fiancePlatform\\mysite\\company\\static\\js\\jquery-3.1.0\\jquery-3.1.0.js"></script>
+<script>
+
+$().ready(function() {
+  $("#panel h1.head").bind('click', function() {
+    var $content = $(this).next();
+    if($content.is(":visible")) {
+      $content.hide();
+    } else {
+      $content.show();
+    }
+  }).bind('mouseover', function() {
+    $(this).next().hide();
+  }).bind('mouseout', function() {
+    $(this).next().show();
+  });
+})
+
+
+
+/*
+$(document).ready(function() {
+  //code
+})
+$(function() {
+  //code
+})
+*/
+
+/*
+//webAPI绑定隐藏显示内容功能
+window.onload = function() {
+  var head = document.getElementsByClassName('head');
+  var content = document.getElementsByClassName('content')
+  var style = content[0].style;
+  head[0].addEventListener('onclick', function() {
+    if(style.display === '') {
+      style.display = 'inline';
+    } else {
+      style.display = '';
+    }
+  });
+  head[0].addEventListener('mouseover', function() {
+    style.visibility = "hidden";
+  });
+  head[0].addEventListener('mouseout', function() {
+    style.visibility = "visible";
+  });
+}
+*/
+
+/*
+var i = 0;
+var arr = [];
+arr.test1 = document.getElementById('test1');
+arr.test1.addEventListener('click',function(){
+  alert(test1.innerText);
+}, false);
+alert(test1.innerText);
+for (var i = 0; i < 5; i++) {
+  alert(i);
+}
+for (var i = 0; i < 5; i++) {
+  alert(i);
+}
+*/
+</script>
+</html>

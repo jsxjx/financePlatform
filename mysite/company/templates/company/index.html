@@ -1,0 +1,260 @@
+{% extends "company/base.html" %}
+
+{% block title %}announcement{% endblock %}
+
+{% block content %}
+<!--
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center lighten-2">Finance Platform</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A modern finace platform which for chinese company.</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    {% load static %}
+    <div class="parallax"><img src="{% static 'image/background5.jpg' %}" alt="Unsplashed background img 1"></div>
+  </div>
+-->
+  <div class="parallax-container">
+      <div class="row">
+        <div class="slider">
+          <ul class="slides">
+           <li>
+             {% load static %}
+             <img src="{% static 'image/background10.jpg' %}"> <!-- random image -->
+             <div class="caption center-align">
+             <h3 style="font-family:"黑体","宋体",sans-serif;">中国经济 世界目光</h3>
+             <h5 class="light grey-text text-lighten-3">沙漠亦有宝藏</h5>
+             </div>
+           </li>
+           <li class="black-text ">
+             {% load static %}
+             <img src="{% static 'image/background6.jpg' %}">
+             <div class="caption center-align">
+             <h3 class="black-text">鉴古人 丝路通商</h3>
+             <h5 class="light black-text text-lighten-3">绿洲熙熙攘攘</h5>
+             </div>
+           </li>
+           <li>
+             {% load static %}
+             <img src="{% static 'image/background11.jpg' %}">
+             <div class="caption center-align">
+             <h3>古往今来 礼仪之邦</h3>
+             <h5 class="light grey-text text-lighten-3">祝友好来往</h5>
+             </div>
+           </li>
+         </ul>
+        </div>
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <ul id="scroll-test1">
+          <li style="opacity:0">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                <h5 class="center">快速</h5>
+
+                <p class="light">通过追踪最新的一带一路信息，使用户不会因错过重要的消息，而失去投资的最佳机会。</p>
+              </div>
+            </div>
+          </li>
+      <li style="opacity:0">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">友好</h5>
+
+            <p class="light">通过友好的设计，带给用户非凡的浏览交互体验。</p>
+          </div>
+        </div>
+      </li>
+      <li style="opacity:0">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">全面</h5>
+
+            <p class="light">带来全面的经济数据信息。</p>
+          </div>
+        </div>
+      </li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <p>一带一路，是指“丝绸之路经济带”和“21世纪海上丝绸之路”，“一带一路”不是一个实体和机制，而是合作发展的理念和倡议，是充分依靠中国与有关国家既有的双多边机制，借助既有的、行之有效的区域合作平台，旨在借用古代“丝绸之路”的历史符号，高举和平发展的旗帜，积极主动地发展与沿线国家的经济合作伙伴关系，共同打造政治互信、经济融合、文化包容的利益共同体、命运共同体和责任共同体。“一带一路”规划，被认为是“中国版马歇尔计划”的战略载体。</p>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static 'image/background17.jpg' %}" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row" >
+        <ul id="scroll-test2">
+          <li style="opacity:0">
+            <div class="col s12 m4" >
+              <div class="card" >
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="{% static 'image/6-8.jpg' %}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">公告 <i
+                  class="mdi-navigation-more-vert right"></i></span>
+                  <p><a href="/company/announcement">This is a link</a></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">公告 <i class="mdi-navigation-close right"></i></span>
+                  <p>跟踪最新的上市公司公告，来捕捉它们的动向。</p>
+                </div>
+              </div>
+            </div>
+          </li >
+      <li style="opacity:0">
+        <div class="col s12 m4">
+          <div class="card" >
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator " src="{% static 'image/6-5.jpg' %}">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">公司信息 <i
+              class="mdi-navigation-more-vert right"></i></span>
+              <p><a href="#">请在搜索中搜索</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">公司信息<i class="mdi-navigation-close right"></i></span>
+              <p>获取最新的公司信息，包括公司基本信息：全称、股票代码、法定代表人等；公司高管信息；公司财务信息：主要财政指标、损益、资产负债等数据。</p>
+            </div>
+          </div>
+        </div>
+      </li >
+        <li style="opacity:0">
+        <div class="col s12 m4" >
+          <div class="card" >
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="{% static 'image/6-2.jpg' %}">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">大股东增减持 <i
+              class="mdi-navigation-more-vert right"></i></span>
+              <p><a href="/company/majorShareholdersIncreaseOrDecrease/">大股东增减持</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
+              <p>追踪大股东增减持公司的信息，包括该股东信息、变化数量、占股比例、变化后比例、变动日期。</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+      <div class="row">
+        <ul id="scroll-test3">
+          <li style="opacity:0">
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="{% static 'image/6-3.jpg' %}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">股本信息 <i class="mdi-navigation-more-vert right"></i></span>
+                  <p><a href="#">This is a link</a></p>
+                </div>
+                        <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">股本信息<i class="mdi-navigation-close right"></i></span>
+                  <p>跟踪最新的上市公司公告，来捕捉它们的动向。</p>
+                </div>
+              </div>
+                </div>
+          </li>
+          <li style="opacity:0">
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="{% static 'image/6-4.jpg' %}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">首发情况表 <i
+                  class="mdi-navigation-more-vert right"></i></span>
+                  <p><a href="/company/ipoIinfo/">This is a link</a></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">首发情况表<i class="mdi-navigation-close right"></i></span>
+                  <p>新上市公司的股票首发情况。</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li style="opacity:0">
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="{% static 'image/background17.jpg' %}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"> <i
+                  class="mdi-navigation-more-vert right"></i></span>
+                  <p><a href="#">This is a link</a></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Contact Us</h4>
+          <p class="left-align light"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <div class="parallax-container valign-wrapper" id="scroll-test4">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <ul>
+            <li style="opacity:0"><h5 class="header col s12 light">一带一路对经济的意义</h5></li>
+            <li style="opacity:0"><p>共建“一带一路”顺应世界多极化、经济全球化、文化多样化、社会信息化的潮流，秉持开放的区域合作精神，致力于维护全球自由贸易体系和开放型世界经济。  共建“一带一路”致力于亚欧非大陆及附近海洋的互联互通，建立和加强沿线各国互联互通伙伴关系，构建全方位、多层次、复合型的互联互通网络，实现沿线各国多元、自主、平衡、可持续的发展。“一带一路”的互联互通项目将推动沿线各国发展战略的对接与耦合，发掘区域内市场的潜力，促进投资和消费，创造需求和就业，增进沿线各国人民的人文交流与文明互鉴，让各国人民相逢相知、互信互敬，共享和谐、安宁、富裕的生活。</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img id="image-test" style="opacity:0" src="{% static 'image/background3.jpg' %}" alt="Unsplashed background img 3"></div>
+  </div>
+
+  {% endblock %}

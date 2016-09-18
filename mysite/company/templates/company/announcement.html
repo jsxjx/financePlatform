@@ -1,0 +1,25 @@
+{% extends "company/base.html" %}
+
+{% block title %}announcement{% endblock %}
+
+{% block content %}
+<div class="container">
+  <section>
+    <h5>公告</h5>
+  </section>
+  <section>
+    {% if latest_announcements_list %}
+      <ul class="collapsible" data-collapsible="accordion">
+      {% for announcement in latest_announcements_list %}
+        <li>
+          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>{{ announcement.announcement_title }}<p class="">{{announcement.announcement_date}}</p></div>
+          <div class="collapsible-body z-depth-3 "><p>{{ announcement.announcement_content }}</p></div>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No announcement are available.</p>
+    {% endif %}
+</section>
+</div>
+{% endblock %}

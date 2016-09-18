@@ -1,0 +1,50 @@
+{% extends "company/base.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+          <h5 class="center">股票首发情况</h5>
+          <table class="hoverable bordered responsive-table">
+            <thead>
+              <tr>
+                <th data-field="name">股票代码</th>
+                <th data-field="name">公司名称</th>
+                <th data-field="name">发行总股数</th>
+                <th data-field="name">发行价格</th>
+                <th data-field="name">筹资金额</th>
+                <th data-field="name">发行市盈率</th>
+                <th data-field="name">发行方式</th>
+                <th data-field="name">主承销商</th>
+                <th data-field="name">中签率</th>
+                <th data-field="name">发行日期</th>
+
+              </tr>
+            </thead>
+            {% if ipo_info_list %}
+            <tbody>
+              {% for ipo_info in ipo_info_list %}
+              <tr >
+                <td>{{ ipo_info.stock_id}}</td>
+                <td></td>
+                <td>{{ ipo_info.issued_sum}}</td>
+                <td>{{ ipo_info.issued_price}}</td>
+                <td>{{ ipo_info.financing_amount}}</td>
+                <td>{{ ipo_info.issued_earning_rate}}</td>
+                <td>{{ ipo_info.issued_method}}</td>
+                <td>{{ ipo_info.main_underwriter}}</td>
+                <td>{{ ipo_info.success_rate}}</td>
+                <td>{{ ipo_info.IPO_time}}</td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+            <p>No info are available.</p>
+          {% endif %}
+  </div>
+</div>
+{% endblock %}

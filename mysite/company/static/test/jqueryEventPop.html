@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+</head>
+<style>
+.content{
+  display:;
+}
+.mouseover {
+  color: blue;
+}
+
+#testSlide {
+  width: 1000px;
+}
+#testSlide p {
+  position: relative;
+  left: 100%;
+}
+</style>
+<body>
+  <div id="testSlide">
+    <p >向左</p>
+  </div>
+  <div id="content">
+    外层 div
+    <span >内层 div</span>
+    外层div
+  </div>
+  <div id="msg"></div>
+  <div id="testDiv">
+    <button id="testButton">test</button>
+  </div>
+  <div id="testToggle">
+    <h5 id="">标题</ht>
+    <p>内容</p>
+  </div>
+
+
+</body>
+<script src="G:\\Program\\work\\fiancePlatform\\mysite\\company\\static\\js\\jquery-3.1.0\\jquery-3.1.0.js"></script>
+<script>
+
+function isDom(o) {
+  if(o) {
+    if(typeof HTMLElement === "function" || typeof HTMLElement === "Object") {
+      if(o instanceof HTMLElement) {
+        return true;
+      }else {
+        return false;
+      }
+    }else if (o.nodeType && o.nodeType === 1) {
+      return true;
+    }else {
+      return false;
+    }
+  }else{
+    return false;
+  }
+}
+/**
+* For convenient
+* To be shorter 
+**/
+function isElement(o) {
+    if(o && (typeof HTMLElement==="function" || typeof HTMLElement==="object") && o instanceof HTMLElement){
+        return true;
+    }else{
+        return (o && o.nodeType && o.nodeType===1) ? true : false;
+    };
+};
+
+window.onload = function() {
+  function slideL(node, v) {
+
+    rightIndex = node.style.left;
+    node.style.left = rightIndex - v;
+    setTimeout(slideL, 1000);
+  }
+  var test = document.getElementById('testSlide');
+  slideL(test,0.1);
+};
+
+
+$(function() {
+
+
+  $('span').bind('click', function(event) {
+    var txt = $('#msg').html() + '<p>内层元素被单机</p>';
+    $('#msg').html(txt);
+    //evet.stopPropagation();
+    //event.preventDefault();
+  }).bind('mouseover mouseout', function() {
+    $(this).toggleClass('mouseover');
+  });
+  $('span').trigger('click');
+  /*
+  $('span').click(function(event) {
+    alert(event.type);
+    return false;
+  });
+  */
+  $('#content').bind('click', function() {
+    var txt = $('#msg').html() + '<p>外层元素被单机</p>';
+    $('msg').html(txt);
+  });
+  $('body').bind('click', function() {
+    var txt = $('#msg').html() + '<p>body被单机</p>';
+    $('msg').html(txt);
+  });
+  $('#testButton').bind('myClick', function(event, msg1, msg2) {
+    $('#testDiv').append('<p>' + msg1 + msg2 + '</p>');
+  });
+  $('#testButton').trigger('myClick', ['rwn', 'hello']);
+  $('#testToggle h5').click(function() {
+    $('#testToggle p').toggle(function() {
+      $(this).slideUp();
+    },function(){
+      $(this).slideDown();
+    });
+  });
+
+
+})
+/*
+window.onload = function() {
+  var body = document.getElementsByTagName('body')[0];
+  var outerDiv = document.getElementById('content');
+  var innerDiv = outerDiv.getElementsByTagName('span')[0];
+  //不能var outerDiv = body[0].getElementById('content');
+  //body与其他元素不一样
+  var msg = document.getElementById('msg');
+  body.addEventListener('click', function() {
+    var txt = msg.innerHTML + "<p>body元素被单击</p>";
+    msg.innerHTML = txt;
+  });
+  outerDiv.addEventListener('click', function() {
+    var txt = msg.innerHTML + "<p>外层div元素被单击</p>";
+    msg.innerHTML = txt;
+  });
+  innerDiv.addEventListener('click', function() {
+    var txt = msg.innerHTML + "<p>内层div元素被单击</p>";
+    msg.innerHTML = txt;
+  });
+}
+
+function delSpace(nodeObj) {
+  var txt = nodeObj.innerHTML;
+
+}
+//delete the events pop
+function delParEvents(nodeObj) {
+  var node = nodeObj;
+
+  while (node.parentNode.onclick != '') {
+
+  }
+}
+*/
+</script>

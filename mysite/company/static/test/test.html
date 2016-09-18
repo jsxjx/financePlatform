@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+<style>
+.content{
+  display: none;
+}
+</style>
+<body>
+  <div id="test1">
+    <p>test1</p>
+  </div>
+  <div id="panel">
+    <h1 class="head">Hello World!</h1>
+    <div class="content">
+      JJJJJJJJJJJJJ
+    </div>
+  </div>
+</body>
+<script>
+$().ready(function() {
+  $("#panel h1.head").bind('click', function() {
+    $(this).next().show();
+  });
+})
+/*
+$(document).ready(function() {
+  //code
+})
+$(function() {
+  //code
+})
+*/
+
+/*
+window.onload = function() {
+  var head = document.getElementsByClassName('head');
+  var content = document.getElementsByClassName('content')
+  head[0].addEventListener('click', function() {
+    content[0].style.display = 'inline';
+  });
+}
+*/
+/*
+var i = 0;
+var arr = [];
+arr.test1 = document.getElementById('test1');
+arr.test1.addEventListener('click',function(){
+  alert(test1.innerText);
+}, false);
+alert(test1.innerText);
+for (var i = 0; i < 5; i++) {
+  alert(i);
+}
+for (var i = 0; i < 5; i++) {
+  alert(i);
+}
+*/
+</script>
+</html>
