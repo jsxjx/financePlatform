@@ -56,7 +56,6 @@ def announcement(request):
     #pdb.set_trace()
     return render(request, 'company/announcement.html', context)
 
-@login_required
 def majorShareholdersIncreaseOrDecrease(request):
     major_Shareholders_change_list = MajorShareholdersIncreaseOrDecrease.objects.all()
     context = {'major_Shareholders_change_list': major_Shareholders_change_list}

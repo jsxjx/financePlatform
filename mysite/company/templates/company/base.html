@@ -36,7 +36,9 @@
   </ul>
   <nav class="blue white-text" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/company/" class="brand-logo white-text">一带一路</a>
+      {% load static %}
+      <img class="" style="width" src="{% static "image/ricoLogo.jpg" %}"></img>
+      <a id="logo-container" href="/company/" class="brand-logo white-text">一带一路经济平台</a>
       <ul class="right hide-on-med-and-down">
         <li>
           <div class="nav-wrapper">
@@ -51,7 +53,7 @@
           </div>
         </li>
         <li ><a  class="white-text" href="/company/announcement">公告</a></li>
-        <li><a class=""  href="/company/majorShareholdersIncreaseOrDecrease/">增减持</a></li>
+        <!--<li><a class=""  href="/company/majorShareholdersIncreaseOrDecrease/">增减持</a></li>-->
         <li><a class=""  href="/company/countryData/">国家数据</a></li>
         <!--
         <li><a class="blue-text  dropdown-button" href="#!" data-activates="dropdown2">幕资<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -59,16 +61,16 @@
         -->
         <li><a class="dropdown-button" href="/company/login">登陆</a></li>
         <li><a class="dropdown-button" href="/company/signup">注册</a></li>
-        <li class="">
+        <li class="" style="">
           <div class="switch">
            <label class="white-text blue">
-             中
+             CN
              <input type="checkbox">
              <span class="lever blue lighten-2"></span>
-             英
+             EN
            </label>
          </div>
-        </li>
+       </li>
       </ul>
       <ul id="nav-mobile" class="side-nav blue lighten-1 white-text">
         <li>
@@ -84,7 +86,7 @@
           </div>
         </li>
         <li><a class="white-text"  href="/company/announcement" >公告</a></li>
-        <li><a class="white-text"  href="/company/majorShareholdersIncreaseOrDecrease/">增减持</a></li>
+        <!--<li><a class="white-text"  href="/company/majorShareholdersIncreaseOrDecrease/">增减持</a></li>-->
         <li><a class="white-text"  href="/company/countryData/">国家数据</a></li>
         <li><a class="white-text dropdown-button" href="#!" data-activates="dropdown2">幕资<i class="material-icons  right">arrow_drop_down</i></a></li>
         <li><a class="white-text dropdown-button" href="/company/login">登陆</a></li>
@@ -110,9 +112,10 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
+          <h5 class="white-text">中投锐科</h5>
           <p class="grey-text text-lighten-4">我们致力于开发更强大、更可靠、更全面的金融平台系统，帮助用户了解中国的金融信息。</p>
         </div>
+        <!--
         <div class="col l3 s12">
           <h5 class="white-text">Settings</h5>
           <ul>
@@ -122,13 +125,12 @@
             <li><a class="white-text" href="#!">Link 4</a></li>
           </ul>
         </div>
+        -->
         <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
+          <h5 class="white-text">合作伙伴</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text" href="http://www.sinoricogroup.com/">中投锐科</a></li>
+            <li><a class="white-text" href="http://www.pandanewcapital.com/">熊猫新资本</a></li>
           </ul>
         </div>
       </div>
