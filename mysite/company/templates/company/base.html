@@ -37,8 +37,8 @@
   <nav class="blue white-text" role="navigation">
     <div class="nav-wrapper container">
       {% load static %}
-      <img class="" style="width" src="{% static "image/ricoLogo.jpg" %}"></img>
-      <a id="logo-container" href="/company/" class="brand-logo white-text">一带一路经济平台</a>
+      <img class="" style="height:64px; " src="{% static "image/ricoLogo.png" %}"></img>
+        <a id="logo-container" href="/company/" class="brand-logo white-text ">一带一路经济平台</a>
       <ul class="right hide-on-med-and-down">
         <li>
           <div class="nav-wrapper">
@@ -130,7 +130,6 @@
           <h5 class="white-text">合作伙伴</h5>
           <ul>
             <li><a class="white-text" href="http://www.sinoricogroup.com/">中投锐科</a></li>
-            <li><a class="white-text" href="http://www.pandanewcapital.com/">熊猫新资本</a></li>
           </ul>
         </div>
       </div>
@@ -147,10 +146,9 @@
   {% load static %}
   <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
   <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/materialize.min.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
   <script src="{% static 'js/functools.js' %}"></script>
-  <script src="{% static 'js/i18next.js' %}"></script>
 
   {% block js %}
   {% endblock %}

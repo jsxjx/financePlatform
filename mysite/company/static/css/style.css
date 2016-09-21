@@ -60,6 +60,11 @@ footer.page-footer {
   margin: 0;
 }
 
+#logo-container {
+  font-size: 120%;
+  font-weight: bold;
+}
+
 .tabs .indicator {
     background-: blue;
     : blue;
