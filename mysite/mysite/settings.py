@@ -78,13 +78,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'finance',
-        'USER': 'root',
+        'NAME': 'Noaiii$finance',
+        'USER': 'Noaiii',
         'PASSWORD': '33173560rwn',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'Noaiii.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
+
 
 
 # Password validation
