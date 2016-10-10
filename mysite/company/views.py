@@ -1,5 +1,5 @@
 import pdb
-import json
+#import json
 import os
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -8,20 +8,27 @@ from django.template import loader
 from django.views.decorators.http import require_http_methods
 from .models import  MajorFinancialIndicy, CompanyInfo, IpoIinfo, MajorShareholdersIncreaseOrDecrease,Announcement,Excutive, CapitalStructure
 from django.contrib.auth import logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy
+from rest_framework import viewsets
+from company.serializer import UserSerializer, GroupSerializer
+#from django.utils.translation import ugettext
+#from django.utils.translation import ugettext_lazy
 # Create your views here.
 
 
 
 @require_http_methods(["GET", "POST"])
 def index(request):
+    """ view function to inde page
+
+    """
     return render(request, 'company/index.html')
 
 def info(request, stock_id):
+    """ view function to info page
 
+    """
     company_info = CompanyInfo.objects.get(stock_id=stock_id)
     company_excutive = Excutive.objects.filter(stock_id=stock_id)
     major_financial_indicy_list = MajorFinancialIndicy.objects.filter(stock_id=stock_id).order_by('-announce_year', '-reporting_period')
@@ -51,18 +58,48 @@ def capitalStructure(request, stock_id):
 
 
 def announcement(request):
+    """ return announcement page
+
+    Args:
+
+    Returns:
+        A HttpResponse
+
+    Raises:
+        Error
+    """
     latest_announcements_list = Announcement.objects.order_by('announcement_date')[:10]
     context = {'latest_announcements_list':latest_announcements_list}
     #pdb.set_trace()
     return render(request, 'company/announcement.html', context)
 
 def majorShareholdersIncreaseOrDecrease(request):
+    """ return big page
+
+    Args:
+
+    Returns:
+        A HttpResponse
+
+    Raises:
+        Error
+    """
     major_Shareholders_change_list = MajorShareholdersIncreaseOrDecrease.objects.all()
     context = {'major_Shareholders_change_list': major_Shareholders_change_list}
     #pdb.set_trace()
     return render(request, 'company/majorShareholdersIncreaseOrDecrease.html', context)
 
 def ipoIinfo(request):
+    """ return ipoInfo page
+
+    Args:
+
+    Returns:
+        A HttpResponse
+
+    Raises:
+        Error
+    """
     ipo_info_list = IpoIinfo.objects.order_by('IPO_time')
 
     '''
@@ -74,16 +111,39 @@ def ipoIinfo(request):
     return render(request, 'company/ipoIinfo.html', context)
 
 def majorFinancialIndicy(request, stock_id):
+    """ return majorFinancialIndicy page
+    Args:
+        stock_id
+    Returns:
+        A HttpResponse
+    Raises:
+        Error
+    """
     major_financial_list = MajorFinancialIndicy.objects.filter(stock_id=stock_id).order_by('change_date')
     context = {'major_financial_indicy_list': major_financial_list}
     return render(request, 'company/majorFinancialIndicy.html', context)
 
 @login_required
 def logOut(request):
+    """ func logout
+    Args:
+    Returns:
+    Raises:
+        Error
+    """
+
     logOut(request)
     return
 
 def signup(request):
+    """ func signup
+
+    the func to create user
+
+    Returns:
+    Raises:
+        Error
+    """
     if request.method == 'GET':
         #template = loader.get_template('company/signup.html')
         return render(request, 'company/signup.html')
@@ -104,16 +164,23 @@ def signup(request):
             pass
 
 def countryData(request):
+    """ func to countryData page
+
+    Returns:
+    Raises:
+        Error
+    """
     return render(request, 'company/countryData.html')
 
-def worldJson(request):
-    """ Response ths data(json)  for ajax(GET) from browser, to init the map for Echarts.js
+def worldJson():
+    """
+    Response ths data(json)  for ajax(GET) from browser, to init the map for Echarts.js
 
-        Returns:
-            the world.json data
+    Returns:
+        the world.json data
 
-        Raise:
-            Error
+    Raise:
+        Error
     """
     module_dir = os.path.dirname(__file__)
     file_path = os.path.join(module_dir, 'world.json')
@@ -121,6 +188,12 @@ def worldJson(request):
 
 
 def searchCompany(request):
+    """ func to search company page
+
+    Returns:
+    Raises:
+        Error
+    """
     #pdb.set_trace()
     if request.method == 'POST':
         search_word = request.POST.get('search')
@@ -130,7 +203,24 @@ def searchCompany(request):
     else:
         return 0
 
+class UserViewSet(viewsets.ModelViewSet):
+    """UserViewSet class
 
+    ViewSets define the view behavior.
+
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+     API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+
+"""
 def testTrans(request,count):
     count = Report.objects.count()
     if count == 1:
@@ -147,3 +237,4 @@ def testTrans(request,count):
         'name': name
     }
     return HttpResponse(output)
+"""

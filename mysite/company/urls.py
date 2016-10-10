@@ -21,6 +21,6 @@ urlpatterns = [
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
-    url(r'^testTrans/$', views.testTrans, name='testTrans'),
+    #url(r'^testTrans/$', views.testTrans, name='testTrans'),
 
 ]
