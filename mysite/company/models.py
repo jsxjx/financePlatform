@@ -23,7 +23,7 @@ class CompanyInfo(models.Model):
     #注册地址
     registered_address = models.CharField(max_length=40)
     #注册资本
-    registered_capital = models.IntegerField
+    registered_capital = models.IntegerField()
     #法定代表人
     legal_representative = models.CharField(max_length=20)
     #行业种类
@@ -43,7 +43,10 @@ class IpoIinfo(models.Model):
     首发形况表
 
     """
-    stock_id = models.ForeignKey(CompanyInfo)
+    stock_id = models.ForeignKey(
+        CompanyInfo,
+        on_delete=models.CASCADE
+    )
     #发行日期
     IPO_time = models.DateTimeField()
     #发行总股数
@@ -61,6 +64,8 @@ class IpoIinfo(models.Model):
     #中签
     success_rate = models.FloatField()
 
+    def __str__(self):
+        return self.stock_id + self.IPO_time
 """
 增发情况表
 
@@ -74,7 +79,10 @@ class CapitalStructure(models.Model):
     股本结构
 
     """
-    stock_id = models.CharField(max_length=10)
+    stock_id = models.ForeignKey(
+        CompanyInfo,
+        on_delete=models.CASCADE
+    )
     #变动时间
     change_date = models.DateField(default=datetime.datetime.now().date())
     #公告时间
@@ -92,6 +100,8 @@ class CapitalStructure(models.Model):
     #总股本
     total_shared = models.IntegerField()
 
+    def __str__(self):
+        return self.stock_id
 
 class Excutive(models.Model):
     """Excutive model
@@ -110,6 +120,8 @@ class Excutive(models.Model):
     #最高学历
     highest_qualification = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.stock_id
 
 class MajorFinancialIndicy(models.Model):
     """MajorFinancialIndicy model
@@ -117,7 +129,7 @@ class MajorFinancialIndicy(models.Model):
     公司财务主要指标
 
     """
-    stock_id = models.CharField(max_length=10)
+    stock_id = models.ForeignKey(CompanyInfo)
     stock_shorter_name = models.CharField(max_length=20)
     announce_year = models.CharField(max_length=10)
     #报告期
@@ -139,13 +151,16 @@ class MajorFinancialIndicy(models.Model):
     #固定资产比率
     fixed_assets_ratio = models.FloatField()
 
+    def __str__(self):
+        return self.stock_shorter_name
+
 class MajorShareholdersIncreaseOrDecrease(models.Model):
     """MajorShareholdersIncreaseOrDecrease model
 
     大股东增减持
 
     """
-    stock_id = models.CharField(max_length=10)
+    stock_id = models.ForeignKey(CompanyInfo)
     stock_shorter_name = models.CharField(max_length=20)
     #股东名称
     shareholder_name = models.CharField(max_length=10)
@@ -176,6 +191,8 @@ class MajorShareholdersIncreaseOrDecrease(models.Model):
     #变动结束日
     change_end_date = models.DateField(default=datetime.datetime.now().date())
 
+    def __str__(self):
+        return self.stock_shorter_name
 
 class Announcement(models.Model):
     """Announcement model
@@ -190,6 +207,8 @@ class Announcement(models.Model):
     announcement_title = models.CharField(max_length=30, default="announcement_title")
     announcement_content = models.CharField(max_length=2000)
 
+    def __str__(self):
+        return self.stock_shorter_name
 
 class CountriesData(models.Model):
     """countriesdata model
@@ -233,6 +252,7 @@ class Index(models.Model):
     nameCN = models.CharField(max_length=20)
     unit = models.CharField(max_length=20)
 
+
     def __str__(self):
         return self.nameEN
 
@@ -250,4 +270,5 @@ class IndexData(models.Model):
         Index,
         on_delete=models.CASCADE
     )
+    #data_time = models
     data_value = models.FloatField()
