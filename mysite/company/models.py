@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import datetime
+#import datetime
 from django.db import models
+from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 """
 reload(sys)
@@ -23,7 +24,7 @@ class CompanyInfo(models.Model):
     #注册地址
     registered_address = models.CharField(max_length=40)
     #注册资本
-    registered_capital = models.IntegerField()
+    registered_capital = models.IntegerField(default=100)
     #法定代表人
     legal_representative = models.CharField(max_length=20)
     #行业种类
@@ -64,8 +65,8 @@ class IpoIinfo(models.Model):
     #中签
     success_rate = models.FloatField()
 
-    def __str__(self):
-        return self.stock_id + self.IPO_time
+    #def __str__(self):
+    #    return self.stock_id + self.IPO_time
 """
 增发情况表
 
@@ -84,9 +85,9 @@ class CapitalStructure(models.Model):
         on_delete=models.CASCADE
     )
     #变动时间
-    change_date = models.DateField(default=datetime.datetime.now().date())
+    change_date = models.DateField(default=timezone.now())
     #公告时间
-    announcement_date = models.DateField(default=datetime.datetime.now().date())
+    announcement_date = models.DateField(default=timezone.now())
     #变动原因
     change_reason = models.CharField(max_length=100, default='reason')
     #人民币普通股
@@ -99,9 +100,10 @@ class CapitalStructure(models.Model):
     state_owned_shares = models.IntegerField()
     #总股本
     total_shared = models.IntegerField()
-
+    """
     def __str__(self):
         return self.stock_id
+    """
 
 class Excutive(models.Model):
     """Excutive model
@@ -119,9 +121,10 @@ class Excutive(models.Model):
     gender = models.CharField(max_length=6)
     #最高学历
     highest_qualification = models.CharField(max_length=10)
-
+    """
     def __str__(self):
         return self.stock_id
+    """
 
 class MajorFinancialIndicy(models.Model):
     """MajorFinancialIndicy model
@@ -150,10 +153,10 @@ class MajorFinancialIndicy(models.Model):
     near_assets_ratio = models.FloatField()
     #固定资产比率
     fixed_assets_ratio = models.FloatField()
-
+    """
     def __str__(self):
         return self.stock_shorter_name
-
+    """
 class MajorShareholdersIncreaseOrDecrease(models.Model):
     """MajorShareholdersIncreaseOrDecrease model
 
@@ -187,13 +190,13 @@ class MajorShareholdersIncreaseOrDecrease(models.Model):
     #持有总股数
     new_total_number_shares_held = models.IntegerField(default=0)
     #变动开始日
-    change_start_date = models.DateField(default=datetime.datetime.now().date())
+    change_start_date = models.DateField(default=timezone.now())
     #变动结束日
-    change_end_date = models.DateField(default=datetime.datetime.now().date())
-
+    change_end_date = models.DateField(default=timezone.now())
+    """
     def __str__(self):
         return self.stock_shorter_name
-
+    """
 class Announcement(models.Model):
     """Announcement model
 
@@ -208,7 +211,7 @@ class Announcement(models.Model):
     announcement_content = models.CharField(max_length=2000)
 
     def __str__(self):
-        return self.stock_shorter_name
+        return self.stock_id
 
 class CountriesData(models.Model):
     """countriesdata model
@@ -251,7 +254,16 @@ class Index(models.Model):
     shortnameEN = models.CharField(max_length=10)
     nameCN = models.CharField(max_length=20)
     unit = models.CharField(max_length=20)
-
+    FREQUENCY_CHOICES = (
+        ('Y', 'Year'),
+        ('Q', 'Quarter'),
+        ('M', 'Month')
+    )
+    frequency = models.CharField(
+        max_length=20,
+        choices=FREQUENCY_CHOICES,
+        default='Year'
+    )
 
     def __str__(self):
         return self.nameEN
@@ -271,4 +283,11 @@ class IndexData(models.Model):
         on_delete=models.CASCADE
     )
     #data_time = models
+    data_years = models.CharField(max_length=10)
+    """
+    MONTHS_CHOICES = (
+        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+    )
+    """
+    data_months = models.CharField(max_length=10)
     data_value = models.FloatField()
