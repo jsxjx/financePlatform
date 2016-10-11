@@ -189,3 +189,65 @@ class Announcement(models.Model):
     announcement_type = models.CharField(max_length=10)
     announcement_title = models.CharField(max_length=30, default="announcement_title")
     announcement_content = models.CharField(max_length=2000)
+
+
+class CountriesData(models.Model):
+    """countriesdata model
+
+    data
+
+    """
+    nameEN = models.CharField(max_length=20)
+    nameCN = models.CharField(max_length=20)
+    ASIA = 'AS'
+    EUROPE = 'EU'
+    AFRICA = 'AF'
+    SOUTHAMERICA = 'SA'
+    NORTHAMERICA = 'NS'
+    OCEANIA = 'OA'
+    ANTARCTICA = 'AN'
+    CONTINENT_CHOICE = (
+        (ASIA, 'Asia'),
+        (EUROPE, 'Europe'),
+        (AFRICA, 'Africa'),
+        (SOUTHAMERICA, 'South America'),
+        (NORTHAMERICA, 'Nouth America'),
+        (OCEANIA, 'Oceania'),
+    )
+    continent = models.CharField(
+        max_length=10,
+        choices=CONTINENT_CHOICE
+    )
+
+    def __str__(self):
+        return self.nameEN
+
+class Index(models.Model):
+    """Index model
+
+    data
+
+    """
+    nameEN = models.CharField(max_length=20)
+    shortnameEN = models.CharField(max_length=10)
+    nameCN = models.CharField(max_length=20)
+    unit = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nameEN
+
+class IndexData(models.Model):
+    """the whole model
+
+    data
+
+    """
+    country_name = models.ForeignKey(
+        CountriesData,
+        on_delete=models.CASCADE
+    )
+    index_name = models.ForeignKey(
+        Index,
+        on_delete=models.CASCADE
+    )
+    data_value = models.FloatField()
