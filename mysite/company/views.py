@@ -6,12 +6,12 @@ from django.http import HttpResponse
 from django.http import FileResponse
 from django.template import loader
 from django.views.decorators.http import require_http_methods
-from .models import  MajorFinancialIndicy, CompanyInfo, IpoIinfo, MajorShareholdersIncreaseOrDecrease,Announcement,Excutive, CapitalStructure
+from .models import  MajorFinancialIndicy, CompanyInfo, IpoIinfo, MajorShareholdersIncreaseOrDecrease,Announcement,Excutive, CapitalStructure, IndexData, CountriesData, Index
 from django.contrib.auth import logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
-from company.serializer import UserSerializer, GroupSerializer
+from company.serializer import UserSerializer, GroupSerializer, IndexDataSerializer, CountriesDataSerializer, IndexSerializer
 #from django.utils.translation import ugettext
 #from django.utils.translation import ugettext_lazy
 # Create your views here.
@@ -219,6 +219,26 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+class IndexDataViewSet(viewsets.ModelViewSet):
+    """
+    API to indexdata
+    """
+    queryset = IndexData.objects.all()
+    serializer_class = IndexDataSerializer
+
+class IndexViewSet(viewsets.ModelViewSet):
+    """
+    API to index
+    """
+    queryset = Index.objects.all()
+    serializer_class = IndexSerializer
+
+class CountriesDataViewSet(viewsets.ModelViewSet):
+    """
+    API
+    """
+    queryset = CountriesData.objects.all()
+    serializer_class = CountriesDataSerializer
 
 """
 def testTrans(request,count):
