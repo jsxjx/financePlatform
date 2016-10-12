@@ -220,7 +220,7 @@ class Index(models.Model):
     data
 
     """
-    nameEN = models.CharField(max_length=20)
+    nameEN = models.CharField(max_length=100)
     shortnameEN = models.CharField(max_length=10)
     nameCN = models.CharField(max_length=20)
     unit = models.CharField(max_length=20)
@@ -245,7 +245,7 @@ class CountriesData(models.Model):
     data
 
     """
-    nameEN = models.CharField(max_length=20)
+    nameEN = models.CharField(max_length=40)
     nameCN = models.CharField(max_length=20)
     indexs = models.ManyToManyField(Index, through='IndexData')
     ASIA = 'AS'
