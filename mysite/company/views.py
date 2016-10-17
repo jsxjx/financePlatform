@@ -12,6 +12,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, filters, generics
 from company.serializer import UserSerializer, GroupSerializer, IndexDataSerializer, CountriesDataSerializer, IndexSerializer
+from company.pagination import LargeResultsSetPagination, StandardResultsSetPagination
 #from django.utils.translation import ugettext
 #from django.utils.translation import ugettext_lazy
 # Create your views here.
@@ -228,6 +229,7 @@ class IndexDataViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('country_name', 'index_name', 'data_years', 'data_months')
 
+
 class IndexViewSet(viewsets.ModelViewSet):
     """
     API to index
@@ -244,6 +246,7 @@ class CountriesDataViewSet(viewsets.ModelViewSet):
     serializer_class = CountriesDataSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('nameEN', 'nameCN')
+    pagination_class = LargeResultsSetPagination
 
 class CountiresDataList(generics.ListAPIView):
     serializer_class = CountriesDataSerializer
