@@ -10,7 +10,7 @@ from .models import  MajorFinancialIndicy, CompanyInfo, IpoIinfo, MajorSharehold
 from django.contrib.auth import logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
-from rest_framework import viewsets
+from rest_framework import viewsets, filters, generics
 from company.serializer import UserSerializer, GroupSerializer, IndexDataSerializer, CountriesDataSerializer, IndexSerializer
 #from django.utils.translation import ugettext
 #from django.utils.translation import ugettext_lazy
@@ -225,6 +225,8 @@ class IndexDataViewSet(viewsets.ModelViewSet):
     """
     queryset = IndexData.objects.all()
     serializer_class = IndexDataSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('country_name', 'index_name', 'data_years', 'data_months')
 
 class IndexViewSet(viewsets.ModelViewSet):
     """
@@ -237,9 +239,22 @@ class CountriesDataViewSet(viewsets.ModelViewSet):
     """
     API
     """
+    #pdb.set_trace()
     queryset = CountriesData.objects.all()
     serializer_class = CountriesDataSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('nameEN', 'nameCN')
 
+class CountiresDataList(generics.ListAPIView):
+    serializer_class = CountriesDataSerializer
+
+
+    def get_queryset(self):
+        queryset = CountriesData.objects.all()
+        nameEN = self.request.query_params.get('nameEN', None)
+        if nameEN is not None:
+            queryset = queryset.filter(nameEN=nameEN)
+        return queryset
 """
 def testTrans(request,count):
     count = Report.objects.count()

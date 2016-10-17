@@ -30,6 +30,8 @@ router.register(r'index', views.IndexViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^company/', include('company.urls')),
+    #url(r'^countriesdata/(?P<nameen>.+)/$', views.CountiresDataList.as_view()),
     url(r'^', include(router.urls)),
+
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
