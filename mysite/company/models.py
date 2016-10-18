@@ -44,10 +44,13 @@ class IpoIinfo(models.Model):
     首发形况表
 
     """
+    """
     stock_id = models.ForeignKey(
         CompanyInfo,
         on_delete=models.CASCADE
     )
+    """
+    stock_id = models.CharField(max_length=10)
     #发行日期
     IPO_time = models.DateTimeField()
     #发行总股数
@@ -80,10 +83,13 @@ class CapitalStructure(models.Model):
     股本结构
 
     """
+    """
     stock_id = models.ForeignKey(
         CompanyInfo,
         on_delete=models.CASCADE
     )
+    """
+    stock_id = models.CharField(max_length=10)
     #变动时间
     change_date = models.DateField(default=timezone.now())
     #公告时间
@@ -132,7 +138,8 @@ class MajorFinancialIndicy(models.Model):
     公司财务主要指标
 
     """
-    stock_id = models.ForeignKey(CompanyInfo)
+    #stock_id = models.ForeignKey(CompanyInfo)
+    stock_id = models.CharField(max_length=10)
     stock_shorter_name = models.CharField(max_length=20)
     announce_year = models.CharField(max_length=10)
     #报告期
@@ -163,7 +170,8 @@ class MajorShareholdersIncreaseOrDecrease(models.Model):
     大股东增减持
 
     """
-    stock_id = models.ForeignKey(CompanyInfo)
+    #stock_id = models.ForeignKey(CompanyInfo)
+    stock_id = models.CharField(max_length=10)
     stock_shorter_name = models.CharField(max_length=20)
     #股东名称
     shareholder_name = models.CharField(max_length=10)
